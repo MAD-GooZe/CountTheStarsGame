@@ -57,7 +57,8 @@ var blinkStar = function(star) {
     }, getRandomInt(1000, 20000));
 }
 
-var addStar = function(options){
+var latestStar;
+var addStar = function(options, playSound){
     var star = new Star();
     $('.stars').append(star);
     $(star)
@@ -68,9 +69,12 @@ var addStar = function(options){
 
     if (options.clickable){
 
-        PlaySound(newStarEffects[effect], SFX_VOLUME);
-        effect++;
-        if (effect >= newStarEffects.length) effect = 0;
+        if (typeof(playSound) == "undefined") playSound = true;
+        if (playSound){
+            PlaySound(newStarEffects[effect], SFX_VOLUME);
+            effect++;
+            if (effect >= newStarEffects.length) effect = 0;
+        }
 
         $(star).click(function(){
             $(this).fadeOut(100, function(){
@@ -86,12 +90,17 @@ var addStar = function(options){
                 if (mistakesLeft >=0){
                     PlaySound(wrongStarEffect, SFX_VOLUME);
                     $($('#mistakes .mistake').get(mistakesLeft)).fadeTo(1000, 0);
+
+                    $(latestStar).data('last', false);
+                    addStar(options, false);
+
                 } else {
                     endGame();
                 }
             }
         });
     }
+    latestStar = star;
 }
 
 var endGame = function(){
@@ -112,6 +121,7 @@ var endGame = function(){
         $("#mainMenu").fadeOut(500, newGame);
     });
 }
+
 
 var newGame = function(){
     $('.stars .star').fadeOut(500, function(){
