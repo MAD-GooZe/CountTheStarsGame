@@ -284,7 +284,7 @@ $(document).ready(function(){
     $(document).on('click', '.social_share', function(){
         Share.go(this, {
             text:  "I've counted " + starsCounted + " star" + (starsCounted % 10 == 1 ? "s" : "") + " in \"Count The Stars\" game.",
-            image: window.location.host + "/img/logo.png"
+            image: "http://mad-gooze.github.io/CountTheStarsGame/img/logo.png"
         });
     });
 });
