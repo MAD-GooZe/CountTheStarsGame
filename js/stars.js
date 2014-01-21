@@ -71,7 +71,7 @@ var addStar = function(options, playSound){
 
         if (typeof(playSound) == "undefined") playSound = true;
         if (playSound){
-            PlaySound(newStarEffects[effect], SFX_VOLUME);
+            playSound(newStarEffects[effect], SFX_VOLUME);
             effect++;
             if (effect >= newStarEffects.length) effect = 0;
         }
@@ -88,7 +88,7 @@ var addStar = function(options, playSound){
             } else {
                 mistakesLeft--;
                 if (mistakesLeft >=0){
-                    PlaySound(wrongStarEffect, SFX_VOLUME);
+                    playSound(wrongStarEffect, SFX_VOLUME);
                     $($('#mistakes .mistake').get(mistakesLeft)).fadeTo(1000, 0);
 
                     $(latestStar).data('last', false);
@@ -166,7 +166,7 @@ var updateCounter = function(){
         })
 }
 
-var PlaySound = function(filename, volume, callback){
+var playSound = function(filename, volume, callback){
     if (soundEnabled){
         var audio = new Audio();
         currentSounds.push(audio);
