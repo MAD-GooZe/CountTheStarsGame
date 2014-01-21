@@ -280,4 +280,11 @@ $(document).ready(function(){
 
         $("#mainMenu").fadeOut(500, newGame);
     });
+
+    $(document).on('click', '.social_share', function(){
+        Share.go(this, {
+            text:  "I've counted " + starsCounted + " star" + (starsCounted % 10 == 1 ? "s" : "") + " in \"Count The Stars\" game.",
+            image: window.location.host + "/img/logo.png"
+        });
+    });
 });

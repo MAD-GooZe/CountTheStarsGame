@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
     <meta charset="utf-8" />
-    <title>Count The Stars</title>
+    <title>Count The Stars - a simple meditative game</title>
 
     <link href='http://fonts.googleapis.com/css?family=Poiret+One&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -11,6 +11,7 @@
     <script src="js/prefixfree.min.js"></script>
     <script src="js/jquery-latest.min.js"></script>
     <script src="js/stars.js"></script>
+    <script src="js/share.js"></script>
 </head>
 <body>
     <div class="stars"></div>
@@ -48,16 +49,16 @@
         <h1 align="center">Game over</h1>
         <p  align="center"><span id="starsCountedEnd"></span>. Share your result:</p>
         <div class="socbuttons">
-            <a href="http://vk.com/share.php?url=http://mysite.com" target="_blank">
+            <a class="social_share" data-type="vk">
                 <i class="icon-vkontakte"></i>
             </a>
-            <a>
+            <a class="social_share" data-type="fb">
                 <i class="icon-facebook-squared"></i>
             </a>
-            <a>
+            <a class="social_share" data-type="tw">
                 <i class="icon-twitter"></i>
             </a>
-            <a>
+            <a class="social_share" data-type="gg">
                 <i class="icon-googleplus"></i>
             </a>
         </div>
