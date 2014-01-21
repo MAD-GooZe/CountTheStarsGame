@@ -58,7 +58,7 @@ var blinkStar = function(star) {
 }
 
 var latestStar;
-var addStar = function(options, playSound){
+var addStar = function(options, playNewSound){
     var star = new Star();
     $('.stars').append(star);
     $(star)
@@ -69,8 +69,8 @@ var addStar = function(options, playSound){
 
     if (options.clickable){
 
-        if (typeof(playSound) == "undefined") playSound = true;
-        if (playSound){
+        if (typeof(playNewSound) == "undefined") playNewSound = true;
+        if (playNewSound){
             playSound(newStarEffects[effect], SFX_VOLUME);
             effect++;
             if (effect >= newStarEffects.length) effect = 0;
