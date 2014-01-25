@@ -12,9 +12,21 @@ var Star = function(){
     $(self).width(size);
     $(self).height(size);
 
-    var x = Random.getRandomInt(size/2 + BORDER_SIZE, $(window).width() - size/2 - BORDER_SIZE);
-    var y = Random.getRandomInt(size/2 + BORDER_SIZE, $(window).height() - size/2 - BORDER_SIZE);
-    $(self).css({left: x, top: y});
+
+    var windowWidth = $(window).width(),
+        windowHeight = $(window).height();
+
+
+    var x = Random.getRandomInt(size/2 + BORDER_SIZE, windowWidth - size/2 - BORDER_SIZE);
+    var y = Random.getRandomInt(size/2 + BORDER_SIZE, windowHeight - size/2 - BORDER_SIZE);
+
+    $(self)
+        .data('offsetX', x / windowWidth) // save the star position in percents from top to reposition it properly when resize event is fired
+        .data('offsetY', y / windowHeight)
+        .css({
+            left: x,
+            top: y
+        });
 
     var colors = [
         Random.getRandomColor(MIN_COLOR, MAX_COLOR),
@@ -209,6 +221,7 @@ var setHideTimeout = function(){
 var starsCounted, mistakesLeft, effect = 0, song = Random.getRandomInt(0, songs.length - 1), soundEnabled = true, hideSongNameTimeout = 0;
 var currentSounds = [];
 var musicPlayer;
+
 $(document).ready(function(){
 
     /*var docElm = document.documentElement;
@@ -259,7 +272,7 @@ $(document).ready(function(){
             })
         });
 
-    for(var i = 0; i < 50; i++) addStar({clickable: false});
+    for(var i = 0; i < $(window).width() * $(window).height() / 10000; i++) addStar({clickable: false});
 
     $("#startBtn").click(function(){
         $(this).fadeOut(100, function(){
@@ -273,6 +286,17 @@ $(document).ready(function(){
         Share.go(this, {
             text:  "I've counted " + starsCounted + " star" + (starsCounted % 10 == 1 ? "" : "s") + " in \"Count The Stars\" game.",
             image: "http://mad-gooze.github.io/CountTheStarsGame/img/logo.png"
+        });
+    });
+
+    $(window).resize(function () { // reposition all star when window is resized
+        $('.stars .star').each(function(){
+
+            $(this).css({
+                left: $(this).data('offsetX') * $(window).width(), // set actual coordinates
+                top: $(this).data('offsetY') * $(window).height()
+            });
+
         });
     });
 });
