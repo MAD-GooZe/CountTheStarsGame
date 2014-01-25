@@ -1,97 +1,101 @@
 <!DOCTYPE html>
 <html lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <title>Count The Stars - a simple meditative game</title>
+    <head>
+        <meta charset="utf-8" />
+        <title>Count The Stars - a simple meditative game</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Poiret+One&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="css/fontello.css">
+        <link href='http://fonts.googleapis.com/css?family=Poiret+One&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="css/fontello.css">
 
-    <script src="js/prefixfree.min.js"></script>
-    <script src="js/jquery-latest.min.js"></script>
-    <script src="js/stars.js"></script>
-    <script src="js/share.js"></script>
-</head>
-<body>
-<div class="stars"></div>
-<div class="clouds"></div>
-<div id="counterHolder" class="gameUI">You've counted <span id="counter"></span></div>
-<div id="mistakes" class="gameUI">
-    <div>Mistakes left:</div>
-    <div class="star mistake"></div>
-    <div class="star mistake"></div>
-    <div class="star mistake"></div>
-</div>
+        <script src="js/jquery-latest.min.js"></script>
 
-<div id="bgcover"></div>
 
-<div class="soundControl">
-    <span id="soundToggle"><i class="icon-volume-high"></i></span>
-    <span id="nowPlaying"></span>
-</div>
+        <script src="js/share.js"></script>
+        <script src="js/random.js"></script>
+        <script src="js/color.js"></script>
+        <script src="js/playlist.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <div class="stars"></div>
+        <div class="clouds"></div>
+        <div id="counterHolder" class="gameUI">You've counted <span id="counter"></span></div>
+        <div id="mistakes" class="gameUI">
+            <div>Mistakes left:</div>
+            <div class="star mistake"></div>
+            <div class="star mistake"></div>
+            <div class="star mistake"></div>
+        </div>
 
-<div id="mainMenu">
+        <div id="bgcover"></div>
 
-    <div id="menuContent">
-        <h1 align="center">Count The Stars</h1>
-        <p align="center">Count the stars by clicking them. Try to count as many of them as you can.</p>
-        <h1 align="center" id="startBtn" class="btn">Start!</h1>
-    </div>
+        <div class="soundControl">
+            <span id="soundToggle"><i class="icon-volume-high"></i></span>
+            <span id="nowPlaying"></span>
+        </div>
 
-    <p class="info">
-        <i class="icon-github"></i><a href="http://github.com/MAD-GooZe/CountTheStarsGame">GitHub</a>
-    </p>
+        <div id="mainMenu">
 
-</div>
+            <div id="menuContent">
+                <h1 align="center">Count The Stars</h1>
+                <p align="center">Count the stars by clicking them. Try to count as many of them as you can.</p>
+                <h1 align="center" id="startBtn" class="btn">Start!</h1>
+            </div>
 
-<div id="gameEnded" style="display: none">
-    <h1 align="center">Game over</h1>
-    <p  align="center"><span id="starsCountedEnd"></span>. Share your result:</p>
-    <div class="socbuttons">
-        <a class="social_share" data-type="vk">
-            <i class="icon-vkontakte"></i>
-        </a>
-        <a class="social_share" data-type="fb">
-            <i class="icon-facebook-squared"></i>
-        </a>
-        <a class="social_share" data-type="tw">
-            <i class="icon-twitter"></i>
-        </a>
-        <a class="social_share" data-type="gg">
-            <i class="icon-googleplus"></i>
-        </a>
-    </div>
-    <h2 align="center" id="tryAgainBtn" class="btn">Try Again</h2>
-</div>
+            <p class="info">
+                <i class="icon-github"></i><a href="http://github.com/MAD-GooZe/CountTheStarsGame">GitHub</a>
+            </p>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter23701879 = new Ya.Metrika({id:23701879,
-                    webvisor:true,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true});
-            } catch(e) { }
-        });
+        </div>
 
-        var n = d.getElementsByTagName("script")[0],
-                s = d.createElement("script"),
-                f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+        <div id="gameEnded" style="display: none">
+            <h1 align="center">Game over</h1>
+            <p  align="center"><span id="starsCountedEnd"></span>. Share your result:</p>
+            <div class="socbuttons">
+                <a class="social_share" data-type="vk">
+                    <i class="icon-vkontakte"></i>
+                </a>
+                <a class="social_share" data-type="fb">
+                    <i class="icon-facebook-squared"></i>
+                </a>
+                <a class="social_share" data-type="tw">
+                    <i class="icon-twitter"></i>
+                </a>
+                <a class="social_share" data-type="gg">
+                    <i class="icon-googleplus"></i>
+                </a>
+            </div>
+            <h2 align="center" id="tryAgainBtn" class="btn">Try Again</h2>
+        </div>
 
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="//mc.yandex.ru/watch/23701879" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript">
+            (function (d, w, c) {
+                (w[c] = w[c] || []).push(function() {
+                    try {
+                        w.yaCounter23701879 = new Ya.Metrika({id:23701879,
+                            webvisor:true,
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true});
+                    } catch(e) { }
+                });
 
-</body>
+                var n = d.getElementsByTagName("script")[0],
+                        s = d.createElement("script"),
+                        f = function () { n.parentNode.insertBefore(s, n); };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+                if (w.opera == "[object Opera]") {
+                    d.addEventListener("DOMContentLoaded", f, false);
+                } else { f(); }
+            })(document, window, "yandex_metrika_callbacks");
+        </script>
+        <noscript><div><img src="//mc.yandex.ru/watch/23701879" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+
+    </body>
 </html>

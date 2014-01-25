@@ -1,31 +1,27 @@
 var BORDER_SIZE = 20; //size of border for stars not to collide with ui
 var SFX_VOLUME = 0.5;
 
-var getRandomInt = function(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-var getRandomColor = function(){
-    var color = {};
-    color.r = getRandomInt(180, 255);
-    color.g = getRandomInt(180, 255);
-    color.b = getRandomInt(180, 255);
-    return color;
-}
+var MIN_COLOR = 180,
+    MAX_COLOR = 255; // stars random color settings
 
 var Star = function(){
     var self = document.createElement('div');
     $(self).addClass('star');
 
-    var size = getRandomInt(8, 10);
+    var size = Random.getRandomInt(8, 10);
     $(self).width(size);
     $(self).height(size);
 
-    var x = getRandomInt(size/2 + BORDER_SIZE, $(window).width() - size/2 - BORDER_SIZE);
-    var y = getRandomInt(size/2 + BORDER_SIZE, $(window).height() - size/2 - BORDER_SIZE);
+    var x = Random.getRandomInt(size/2 + BORDER_SIZE, $(window).width() - size/2 - BORDER_SIZE);
+    var y = Random.getRandomInt(size/2 + BORDER_SIZE, $(window).height() - size/2 - BORDER_SIZE);
     $(self).css({left: x, top: y});
 
-    var colors = [getRandomColor(), getRandomColor(), getRandomColor()];
+    var colors = [
+        Random.getRandomColor(MIN_COLOR, MAX_COLOR),
+        Random.getRandomColor(MIN_COLOR, MAX_COLOR),
+        Random.getRandomColor(MIN_COLOR, MAX_COLOR)
+    ];
+
     $(self).css({
         background: 'radial-gradient(ellipse at center, rgb(' +
             colors[0].r +', ' +
@@ -54,7 +50,7 @@ var blinkStar = function(star) {
     setTimeout(function(){
         $(star).fadeTo(200, 0.5).fadeTo(200, 1.0);
         blinkStar(star);
-    }, getRandomInt(1000, 20000));
+    }, Random.getRandomInt(1000, 20000));
 }
 
 var latestStar;
@@ -187,9 +183,9 @@ var playSound = function(filename, volume, callback){
 
 var nextSong = function(){
     if (soundEnabled){
-        var newSong = getRandomInt(0, songs.length - 1);
+        var newSong = Random.getRandomInt(0, songs.length - 1);
         while (newSong == song){
-            newSong = getRandomInt(0, songs.length - 1);
+            newSong = Random.getRandomInt(0, songs.length - 1);
         }
         song = newSong;
         musicPlayer.src = songs[song].fileName;
@@ -210,78 +206,60 @@ var setHideTimeout = function(){
     }, 30000);
 }
 
-var newStarEffects = ["sounds/kastenfrosch__space.mp3", "sounds/kastenfrosch__mysterious.mp3"];
-var wrongStarEffect = "sounds/kastenfrosch__passagierabsetzen.mp3";
-var songs = [
-    {
-        fileName: "music/Beluga_-_Lost_In_Outer_Space.mp3",
-        songName: "Beluga - Lost In Outer Space"
-    },
-    {
-        fileName: "music/Brendan_J._Boyd_-_Quiet_Space__ambient_mix_.mp3",
-        songName: "Brendan J. Boyd - Quiet Space (ambient mix)"
-    },
-    {
-        fileName: "music/mika_-_Fall_to_pieces_-_Silence.mp3",
-        songName: "mika - Fall to pieces - Silence"
-    },
-    {
-        fileName: "music/mixxim_-_Sentimental_Fields.mp3",
-        songName: "mixxim - Sentimental Fields"
-    },
-    {
-        fileName: "music/morgantj_-_Time_Decay.mp3",
-        songName: "morgantj - Time Decay"
-    },
-    {
-        fileName: "music/Tigoolio_-_Dance_of_space_jellyfish.mp3",
-        songName: "Tigoolio - Dance of space jellyfish"
-    }
-];
-
-var starsCounted, mistakesLeft, effect = 0, song = getRandomInt(0, songs.length - 1), soundEnabled = true, hideSongNameTimeout = 0;
+var starsCounted, mistakesLeft, effect = 0, song = Random.getRandomInt(0, songs.length - 1), soundEnabled = true, hideSongNameTimeout = 0;
 var currentSounds = [];
 var musicPlayer;
 $(document).ready(function(){
+
+    /*var docElm = document.documentElement;
+    if (docElm.requestFullscreen) {
+        docElm.requestFullscreen();
+    }
+    else if (docElm.mozRequestFullScreen) {
+        docElm.mozRequestFullScreen();
+    }
+    else if (docElm.webkitRequestFullScreen) {
+        docElm.webkitRequestFullScreen();
+    }*/
+
     musicPlayer = new Audio();
     musicPlayer.addEventListener('ended', function(){
         nextSong();
     });
     nextSong();
 
-    $("#soundToggle").mouseover(function(){
-        if (soundEnabled){
-            clearTimeout(hideSongNameTimeout);
-            $("#nowPlaying")
-                .fadeIn(1000);
-            setHideTimeout();
-        }
-    });
-    $("#soundToggle").click(function(){
-        var newicon;
-        if (soundEnabled = !soundEnabled){
-            newicon = '<i class="icon-volume-high"></i>';
-            nextSong();
-        } else {
-            clearTimeout(hideSongNameTimeout);
-            $("#nowPlaying").fadeOut(1000);
-            musicPlayer.pause();
-            $.each(currentSounds, function(index, audio){
-                audio.pause();
-            });
-            currentSounds = [];
-            newicon = '<i class="icon-volume-off"></i>';
-        }
-        $(this).fadeOut(100, function(){
-            $(this)
-                .html(newicon)
-                .fadeIn(100);
+    $("#soundToggle")
+        .mouseover(function(){
+            if (soundEnabled){
+                clearTimeout(hideSongNameTimeout);
+                $("#nowPlaying")
+                    .fadeIn(1000);
+                setHideTimeout();
+            }
         })
-    });
+        .click(function(){
+            var newicon;
+            if (soundEnabled = !soundEnabled){
+                newicon = '<i class="icon-volume-high"></i>';
+                nextSong();
+            } else {
+                clearTimeout(hideSongNameTimeout);
+                $("#nowPlaying").fadeOut(1000);
+                musicPlayer.pause();
+                $.each(currentSounds, function(index, audio){
+                    audio.pause();
+                });
+                currentSounds = [];
+                newicon = '<i class="icon-volume-off"></i>';
+            }
+            $(this).fadeOut(100, function(){
+                $(this)
+                    .html(newicon)
+                    .fadeIn(100);
+            })
+        });
 
-    for(var i = 0; i < 50; i++){
-        addStar({clickable: false});
-    }
+    for(var i = 0; i < 50; i++) addStar({clickable: false});
 
     $("#startBtn").click(function(){
         $(this).fadeOut(100, function(){
