@@ -8,7 +8,7 @@ var Star = function(){
     var self = document.createElement('div');
     $(self).addClass('star');
 
-    var size = Random.getRandomInt(8, 10);
+    var size = Random.getRandomInt(8, 15);
     $(self).width(size);
     $(self).height(size);
 
@@ -16,9 +16,22 @@ var Star = function(){
     var windowWidth = $(window).width(),
         windowHeight = $(window).height();
 
+    var x, y, good;
+    do {
+        x = Random.getRandomInt(size/2 + BORDER_SIZE, windowWidth - size/2 - BORDER_SIZE);
+        y = Random.getRandomInt(size/2 + BORDER_SIZE, windowHeight - size/2 - BORDER_SIZE);
+        good = true;
 
-    var x = Random.getRandomInt(size/2 + BORDER_SIZE, windowWidth - size/2 - BORDER_SIZE);
-    var y = Random.getRandomInt(size/2 + BORDER_SIZE, windowHeight - size/2 - BORDER_SIZE);
+        $.merge($('.gameUI'), $('.soundControl')).each(function(index, node){ // check hitting in the controls
+            if (
+                (x > node.offsetLeft - 10 && x < node.offsetLeft + node.offsetWidth + 10)
+                &&
+                (y > node.offsetTop - 10 && y < node.offsetTop + node.offsetHeight + 10)
+                ) {
+                good = false;
+            }
+        });
+    } while (!good);
 
     $(self)
         .data('offsetX', x / windowWidth) // save the star position in percents from top to reposition it properly when resize event is fired
