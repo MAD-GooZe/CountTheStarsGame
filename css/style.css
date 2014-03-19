@@ -11,6 +11,22 @@
     to {background-position:10000px 0;}
 }
 
+@media only screen and (max-width: 320px) {
+    body { font-size: 80% }
+}
+@media only screen and (max-width: 480px) {
+    body { font-size: 90% }
+}
+@media only screen and (max-width: 768px) {
+    body { font-size: 100% }
+}
+
+* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+html {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
 .stars, .clouds{
     position:absolute;
     top:0;
@@ -35,32 +51,7 @@
     -o-animation:move-clouds-back 200s linear infinite;
     animation:move-clouds-back 200s linear infinite;
 }
-#moon{
-    background:url(img/moon.png);
-    -webkit-background-size:100%;
-    -moz-background-size:100%;
-    -o-background-size:100%;
-    background-size:100%;
-    position:absolute;
-    width:100px;
-    height:100px;
-    -webkit-border-radius:100%;
-    -moz-border-radius:100%;
-    border-radius:100%;
-    -webkit-box-shadow:6px -6px 20px rgba(196, 185, 164, 0.75);
-    -moz-box-shadow:6px -6px 20px rgba(196, 185, 164, 0.75);
-    box-shadow:6px -6px 20px rgba(196, 185, 164, 0.75);
-    -webkit-animation:move-moon 30s infinite linear;
-    -moz-animation:move-moon 30s infinite linear;
-    -ms-animation:move-moon 30s infinite linear;
-    -o-animation:move-moon 30s infinite linear;
-    animation:move-moon 30s infinite linear;
-    -webkit-transform:translate3d(0, 0, 0);
-    -moz-transform:translate3d(0, 0, 0);
-    -ms-transform:translate3d(0, 0, 0);
-    -o-transform:translate3d(0, 0, 0);
-    transform:translate3d(0, 0, 0);
-}
+
 .stars .star{
     position:absolute;
     display:none;
