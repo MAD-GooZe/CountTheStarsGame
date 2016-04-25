@@ -11,8 +11,7 @@ OST
 *   mika - Fall to pieces - Silence
 *   mixxim - Sentimental Fields
 *   morgantj - Time Decay
-
-Tigoolio - Dance of space jellyfish
+*   Tigoolio - Dance of space jellyfish
 
 
 ### Sound Effects
