@@ -1,0 +1,38 @@
+{
+  "path": "mp3/",
+  "effects": {
+    "newStar": [
+      "kastenfrosch__space.mp3",
+      "kastenfrosch__mysterious.mp3"
+    ],
+    "wrongStar": [
+      "kastenfrosch__passagierabsetzen.mp3"
+    ]
+  },
+  "music": [
+    {
+      "file": "Beluga_-_Lost_In_Outer_Space.mp3",
+      "name": "Beluga Ten - Lost In Outer Space"
+    },
+    {
+      "file": "Brendan_J._Boyd_-_Quiet_Space__ambient_mix_.mp3",
+      "name": "Brendan J. Boyd - Quiet Space (ambient mix)"
+    },
+    {
+      "file": "mika_-_Fall_to_pieces_-_Silence.mp3",
+      "name": "mika - Fall to pieces: Silence"
+    },
+    {
+      "file": "mixxim_-_Sentimental_Fields.mp3",
+      "name": "MIXXIM - Sentimental Fields"
+    },
+    {
+      "file": "morgantj_-_Time_Decay.mp3",
+      "name": "morgantj - Time Decay"
+    },
+    {
+      "file": "Tigoolio_-_Dance_of_space_jellyfish.mp3",
+      "name": "Tigoolio - Dance of space jellyfish"
+    }
+  ]
+}
