@@ -42,16 +42,19 @@ class App {
         this._menuScreenEnd.retryBtn.addEventListener('click', () => {
             this._startGame();
         });
-        this._menuScreenEnd.shareBtn.addEventListener('click', () => {
-            if (window.plugins && window.plugins.socialsharing) {
-                const options = {
-                    message: `I have counted ${this._scoresControl.value} stars in Count The Stars Game!`,
-                    subject: 'Count The Stars', // fi. for email
-                    url: 'http://mad-gooze.github.io/CountTheStarsGame/'
-                };
-                window.plugins.socialsharing.shareWithOptions(options);
-            }
-        });
+
+        if (this._menuScreenEnd.shareBtn) {
+            this._menuScreenEnd.shareBtn.addEventListener('click', () => {
+                if (window.plugins && window.plugins.socialsharing) {
+                    const options = {
+                        message: `I have counted ${this._scoresControl.value} stars in Count The Stars Game!`,
+                        subject: 'Count The Stars', // fi. for email
+                        url: 'http://mad-gooze.github.io/CountTheStarsGame/'
+                    };
+                    window.plugins.socialsharing.shareWithOptions(options);
+                }
+            });
+        }
 
         this._soundControl.show();
         this._menuScreenStart.show();

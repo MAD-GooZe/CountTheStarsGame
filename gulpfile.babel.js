@@ -28,7 +28,6 @@ import uglify from 'rollup-plugin-uglify';
 import json from 'rollup-plugin-json';
 
 import fontello from 'gulp-fontello';
-import googleWebFonts from 'gulp-google-webfonts';
 import webFontsBase64 from 'gulp-google-fonts-base64-css';
 
 import browserSync from 'browser-sync';
