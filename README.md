@@ -32,7 +32,11 @@ All tracks were found on [ccMixter.](http://ccmixter.org/)
 * [cordova-plugin-x-socialsharing](https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin) - для конпки Share после окончания игры
 
 #### Скриншоты
-
+<p align="center">
+  <img src="https://github.com/MAD-GooZe/CountTheStarsGame/blob/master/screens/landscape.jpg?raw=true" width="800"/>
+  <img src="https://github.com/MAD-GooZe/CountTheStarsGame/blob/master/screens/1.jpg?raw=true" width="350"/>
+  <img src="https://github.com/MAD-GooZe/CountTheStarsGame/blob/master/screens/2.jpg?raw=true" width="350"/>
+</p>
 #### Прочее
 
 Тестировал на Asus Zenfone 2 (Android 6.0.1), и в Genymotion на образах Android 5.0 и 6.0.1
