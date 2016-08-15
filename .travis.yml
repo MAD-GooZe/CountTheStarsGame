@@ -12,9 +12,15 @@ install:
 
 install:
   - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
-  - npm install -g gulp phonegap
   - npm install
 
 script:
-  - gulp build --phonegap
-  - phonegap build android
+  - node_modules/.bin/gulp build --phonegap
+  - node_modules/.bin/phonegap build android
+
+cache:
+  directories:
+    - node_modules
+    - platforms
+    - plugins
+    - www

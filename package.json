@@ -37,6 +37,7 @@
     "gulp-stylus": "^2.5.0",
     "gulp-util": "^3.0.7",
     "normalize.css": "^4.2.0",
+    "phonegap": "^6.3.0",
     "rollup": "^0.34.1",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^3.2.0",
