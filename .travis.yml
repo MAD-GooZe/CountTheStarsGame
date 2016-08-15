@@ -7,5 +7,4 @@ node_js:
 before_script:
   - npm install -g gulp phonegap
 script: gulp build --phonegap && phonegap build android
-script: ''
 
