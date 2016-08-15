@@ -7,7 +7,6 @@ android:
     - android-23
 
 
-before_script:
-  - npm install -g gulp phonegap
+before_script: npm install -g gulp phonegap && npm install
 script: gulp build --phonegap && phonegap build android
 
