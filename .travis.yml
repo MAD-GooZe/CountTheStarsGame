@@ -1,8 +1,11 @@
 language: android
 android:
-  - build-tools: build-tools-23.0.1
-node_js:
-  - 'node'
+  components:
+    - tools
+    - platform-tools
+    - build-tools-23.0.2
+    - android-23
+
 
 before_script:
   - npm install -g gulp phonegap
